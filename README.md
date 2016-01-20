@@ -1,6 +1,6 @@
 # Flow
 
-*Development.*  Tool intended for data analysis across distributed systems.
+*Under Development.*  Tool intended for data analysis across distributed systems.
 
 ### Settings
 
