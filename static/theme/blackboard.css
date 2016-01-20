@@ -1,0 +1,45 @@
+/* Port of TextMate's Blackboard theme */
+
+article .CodeMirror.cm-s-blackboard { margin-top: 15px;}
+
+.cm-s-blackboard.CodeMirror { background: #1c2429; color: #F8F8F8; /*min-height: 700px;*/ }
+.cm-s-blackboard .CodeMirror-selected { background: #253B76 !important; }
+.cm-s-blackboard.CodeMirror ::selection { background: rgba(37, 59, 118, .99); }
+.cm-s-blackboard.CodeMirror ::-moz-selection { background: rgba(37, 59, 118, .99); }
+.cm-s-blackboard .CodeMirror-gutters { background: #1c2429; border-right: 0; }
+.cm-s-blackboard .CodeMirror-guttermarker { color: #B39DDB} /*#FF8A80; }*/
+.cm-s-blackboard .CodeMirror-guttermarker-subtle { color: #37474F; }
+.cm-s-blackboard .CodeMirror-linenumber { color: #607D8B; } /*37474F*/
+.cm-s-blackboard .CodeMirror-cursor { border-left: 1px solid #A7A7A7 !important; }
+
+.cm-s-blackboard .cm-keyword { color: #b29adb; } /* a388d4, 9575CD, B39DDB, #FF8A80; }*/
+.cm-s-blackboard .cm-atom,
+.cm-s-blackboard .cm-number,
+.cm-s-blackboard .cm-meta { color: #e2fb6e; } /* ddfb55, D8FA3C*/
+
+/*.cm-s-blackboard .cm-def { color: #4DB6AC; }*/
+
+.cm-s-blackboard .cm-variable, 
+.cm-s-blackboard .cm-variable-2,
+.cm-s-blackboard .cm-header, 
+.cm-s-blackboard .cm-def { color: #b5d1ff; } /* 9cc1ff, rgba(130,177,255,0.8), 81D4FA, B3E5FC, 90CAF9, 80D8FF, #FF8A80*/
+
+.cm-s-blackboard .cm-operator { color: #FFFFFF} /*#FF8A80, B39DDB;}
+*/.cm-s-blackboard .cm-comment { color: #607D8B; }
+
+.cm-s-blackboard .cm-string,
+.cm-s-blackboard .cm-string-2 { color: #f9bdd1; } /* f6a6c1, F48FB1, ECEFF1*/
+
+
+
+.cm-s-blackboard .cm-property,
+.cm-s-blackboard .cm-attribute,
+.cm-s-blackboard .cm-builtin,
+.cm-s-blackboard .cm-tag,
+.cm-s-blackboard .cm-link { color: #a4dad5;  } /* 92d2cc, FF80AB, #80CBC4;*/ 
+
+.cm-s-blackboard .cm-hr { color: #AEAEAE; }
+.cm-s-blackboard .cm-error { background: #9D1E15; color: #F8F8F8; }
+
+.cm-s-blackboard .CodeMirror-activeline-background {background: #3C3636 !important;}
+.cm-s-blackboard .CodeMirror-matchingbracket {outline:1px solid grey;color:white !important}

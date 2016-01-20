@@ -1,0 +1,98 @@
+[
+    {
+        "column_name": "create_date",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "end_ip_address",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "id",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "modify_date",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "name",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "start_ip_address",
+        "table_name": "database_firewall_rules"
+    },
+    {
+        "column_name": "Birthdate",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "City",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "DisabilityStatus",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "EducationLevel",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "EmploymentStatus",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "FirstName",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Gender",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Id",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "LastName",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Latino",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "MaritialStatus",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "PersonsID",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Race",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "SSN",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "State",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Street",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Veteran",
+        "table_name": "Persons"
+    },
+    {
+        "column_name": "Zip",
+        "table_name": "Persons"
+    }
+]

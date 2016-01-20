@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GoLime</title>
+    <meta charset="utf-8"/>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+
+    <link rel=stylesheet href="../static/doc/golime.css">
+    <link rel="stylesheet" href="../static/lib/codemirror.css">
+    <link rel="stylesheet" href="../static/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="../static/addon/dialog/dialog.css">
+    <link rel="stylesheet" href="../static/theme/blackboard.css">
+    <script src="../static/lib/codemirror.js"></script>
+    <script src="../static/addon/search/searchcursor.js"></script>
+    <script src="../static/addon/search/search.js"></script>
+    <script src="../static/addon/dialog/dialog.js"></script>
+    <script src="../static/addon/edit/matchbrackets.js"></script>
+    <script src="../static/addon/edit/closebrackets.js"></script>
+    <script src="../static/addon/comment/comment.js"></script>
+    <script src="../static/addon/wrap/hardwrap.js"></script>
+    <script src="../static/addon/fold/foldcode.js"></script>
+    <script src="../static/addon/fold/brace-fold.js"></script>
+    <!--<script src="../static/mode/go/go.js"></script>-->
+    <script src="../static/mode/sql/sql.js"></script>
+
+    <script src="../static/keymap/sublime.js"></script>
+    <style type="text/css">
+        .CodeMirror {
+            line-height: 1.3; 
+            height: 100%;
+        }
+        
+        .CodeMirror-linenumbers { 
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<!--     <article id="control_panel">
+        <h5></h5>
+    </article> -->
+    <header>
+        <div class="h5 title" id="menu">&#9776;</div>
+        <div class="h5 title" id="filename_display"></div>
+        <nav>        
+            <a id="console" title="Console" class="notexit" href="/"><span class="glyphicon glyphicon-console" aria-hidden="true"></span></a>        
+            <a id="open" title="Open" class="notexit" href="/"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></a>
+            <a id="save" title="Save" class="notexit" href="/"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></a>
+            <a id="run" title="Run" class="notexit" href="/"><span class="glyphicon glyphicon-play" aria-hidden="true"></span></a>
+            <a id="close" title="Close" class="exit" href="/"><span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></a>
+        </nav>
+    </header>   
+    <article id="editor">
+        <input type="hidden" name="filename" id="filename" value="">
+
+        <script>
+            // var value = 'package main\n\nimport "net/http"\n\nimport . "./lib"\n\nfunc main() {\n    port := ":8080"\n    http.HandleFunc("/", RootHandler)\n    http.HandleFunc("/static/", StaticHandler)\n    http.HandleFunc("/editor/", EditorHandler)\n    http.HandleFunc("/save/", SaveHandler)\n\n    go http.ListenAndServe(port, nil)\n\n    AdminTerminal(port)\n\n}\n\nfunc StaticHandler(res http.ResponseWriter, req *http.Request) {\n    http.ServeFile(res, req, req.URL.Path[1:])\n}'
+            var value = 'select distinct table_name, column_name\nfrom INFORMATION_SCHEMA.COLUMNS'
+            var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
+                value: value,
+                lineNumbers: true,
+                mode: "sql",
+                indentUnit: 4,
+                keyMap: "sublime",
+                viewportMargin: 20,
+                autoCloseBrackets: true,
+                matchBrackets: true,
+                showCursorWhenSelecting: true,
+                theme: "blackboard",
+                activeLine: true
+            })
+
+            editor.setSize("initial",900)
+
+            var saveMap = {91: false, 83: false}
+            var openMap = {91: false, 79: false}
+            var runMap = {91: false, 83: false}
+            var closeMap = {91: false, 83: false}
+
+            // $(document).ready(function (e) {
+                $("a#console").click(function(e) {
+                    e.preventDefault()
+                    $("#terminal").toggleClass("hidden")
+                })
+
+
+                $("a#run").click(function(e) {
+                    e.preventDefault()
+                    $.post("/run/", { data: editor.getValue() }, function(data) {
+                        editor.setValue(data["code"])
+                        var results = $("#terminal pre")
+                        results.text(data["output"])
+                        results.text(JSON.stringify(JSON.parse(results.text()),null, 4))
+                    })
+                })
+
+                $("a#save").click(function(e) {
+                    e.preventDefault()
+                    if ($("input#filename").val() == "") {
+                        // var filepath = prompt("Save As...")
+                        $('#myModal').modal('toggle')
+
+                        $("button#submit_save").click(function (ee) {
+                            ee.preventDefault()
+
+
+                            var code_filepath = $("form#save input#filepath").val()
+                            var res_filepath = $("form#save input#results").val()
+                            var results = $("#terminal pre").text()
+
+
+                            $.post("/save/", { code_filepath: code_filepath, code: editor.getValue(), results: results, res_filepath: res_filepath}, function(res) {
+                                console.log(res)
+                                $("input#filename").val(code_filepath)
+                                $('#myModal').modal('toggle')
+
+                            })
+                        })
+
+
+                    } else {
+                        $.post("/save/", { filepath: $("input#filename").val(), code: editor.getValue() }, function(result) {
+                            console.log(result)
+                        })                
+                    }
+                })
+
+
+                $("a#open").click(function(e) {
+                    e.preventDefault()
+                    var filepath = prompt("Open...")
+                    $.post("/open/", { filepath: filepath }, function(result) {
+                        editor.setValue(result)
+                        $("input#filename").val(filepath)
+                        $("div#filename_display").text(filepath)
+
+                    })
+                })
+
+                $("a#close").click(function(e) {
+                    e.preventDefault()
+                    if ($("input#filename").val() != "") {
+                        $.post("/save/", { filepath: $("input#filename").val(), code: editor.getValue() }, function(result) {
+                            editor.setValue("")
+                        })                
+                    } else {
+                        editor.setValue("")
+                    }
+                })
+
+                $("div#menu").click(function(e) {
+                    e.preventDefault()
+                    // var body = $("body")
+                    // body.width("70%")
+                    // body.css("float","right")
+                    $("body").toggleClass("menu")
+                    $("#terminal").toggleClass("menu")
+                    $("header").toggleClass("menu")
+                    $("div#menu").toggleClass("menu")
+
+
+                })
+
+
+
+
+                // var win = $(window)
+                // win.keydown(function(e) {
+                //   // e.preventDefault()
+                //   console.log(e.keyCode)
+
+                //   if (e.keyCode in saveMap) {
+                //     saveMap[e.keyCode] = true;
+                //     if (saveMap[91] && saveMap[83]) {
+                //         e.preventDefault()
+                //         console.log("saving documents")
+                //         saveMap = {91: false, 83: false}
+                //     }
+
+                //   }
+
+                //   if (e.keyCode in openMap) {
+                //     openMap[e.keyCode] = true;
+                //     if (openMap[91] && openMap[79]) {
+                //         e.preventDefault()
+                //         console.log("opening documents")
+                //         openMap = {91: false, 79: false}
+                //     }
+
+                //   }
+                // })
+            // })
+        </script>
+    </article>
+    <div id="terminal">
+        <pre></pre>
+    </div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form id="save" method="post">
+
+            <input id="filepath" type="text" placeholder="example.sql">
+            <input id="results" type="text" placeholder="results.json">
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="submit_save" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+

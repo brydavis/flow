@@ -1,0 +1,228 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url(//themes.googleusercontent.com/static/fonts/sourcesanspro/v5/ODelI1aHBYDBqgeIAH2zlBM0YzuT7MdOe03otPbuUS0.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro Light';
+  font-style: normal;
+  font-weight: 100,400;
+  src: local('Source Sans Pro Light'), local('SourceCodePro-Light');
+}
+
+@font-face {
+  font-family: 'InputMono Thin';
+  font-style: normal;
+  font-weight: 100,400;
+  src: local('InputMono Thin'), local('InputMono-Thin');
+}
+
+body {
+    background-color: #161d21;
+    /*font-family: 'Source Sans Pro Light', 'Source Sans Pro', Helvetica, Arial, sans-serif;*/
+    font-family: 'InputMono Thin', 'Source Sans Pro Light', 'Source Sans Pro', Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-size: 16px;
+    float: inherit;
+    width: 100%;
+
+}
+
+body.menu {
+  /*position: fixed;*/
+  height: 200%;
+  float: right;
+  width: 80%;
+  border-left: 1px solid #eee;
+}
+
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    height: 100%; 
+}
+
+section, article { 
+    display: block; 
+    padding: 0; 
+}
+
+a, a:visited, a:link, .quasilink {
+  color: #eee;
+  text-decoration: none;
+}
+
+em {
+  padding-right: 2px;
+}
+
+article#control_panel {
+  background-color: #eee;
+  color: black;
+  display: none;
+}
+
+article#control_panel.menu {
+  display: inherit;
+}
+
+header {
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    padding-left: 15px;
+    padding-right: 15px;
+    z-index: 99;
+    background-color: #161d21;
+    border-bottom: 1px solid #82B1FF;
+
+}
+
+header.menu {
+  float: right;
+  width: 80%;
+}
+
+.title {
+    color: #FFFFFF;
+    margin: 0;
+    /*margin-top: 6px;*/
+    /*font-size: 10px;*/
+    position: absolute;
+    padding: 9px 12px;
+    /*border: 1px solid #bbb;*/
+    margin-left: -15px;
+}
+
+
+
+.title:hover {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  font-weight: 600;
+  cursor: pointer;
+
+
+}
+
+div#menu.menu {
+  color: #000000;
+  background-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
+  font-weight: 600;
+}
+
+#filename_display {
+    font-size: 16px;
+    margin-left: 25px;
+    margin-top: -2px;
+    color: hsl(67, 100%, 75%);
+}
+
+#filename_display:hover {
+    margin-left: 25px;
+    color: hsl(67, 100%, 75%);
+    background-color: transparent;
+    border: none;
+    cursor: default;
+}
+
+
+
+
+nav {
+    height: 30px;
+    text-align: right;
+}
+
+nav a {
+    font-size: 12px;
+    padding: 14px;
+}
+
+nav a span.glyphicon {
+    top: 6px;    
+}
+
+nav a.notexit:hover {
+    background-color: #82B1FF;
+    /*color: #000000;*/
+}
+
+nav a.exit:hover {
+    background-color: #EF9A9A;
+    /*color: #000000;*/
+}
+
+article {
+  padding-top: 35px;
+  background: #1c2429;
+  z-index: 2;
+  position: relative;
+  min-height: 100%;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+.CodeMirror {
+  height: 200%;
+}
+
+#terminal {
+  z-index: 50;
+  width: 100%;
+  height: 35%;
+  /*  
+    width: 35%;
+    height: 95%;
+    float: right;
+  */  
+  position: fixed;
+  background-color: rgba(130,177,255,0.2);
+  border-top: 1px solid hsl(247.1,100%,75.1%);
+  overflow: auto;
+  bottom: 0;
+  right: 0;
+}
+
+#terminal.hidden {
+  display: hidden;
+}
+
+#terminal.menu {
+  float: right;
+  width: 80%;
+}
+
+#terminal pre {
+  padding-left: 20px;
+  padding-right: 16px;
+  /*position: fixed;*/
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+
+/*@media screen and (min-width: 1000px) {
+  article {
+    margin: 0 auto;
+  }
+  #nav {
+    right: 50%;
+    width: auto;
+    border-right: 349px solid transparent;
+  }
+}*/
+
+
+
+
+/*[(31, 119, 180), (174, 199, 232), (255, 127, 14), (255, 187, 120),
+             (44, 160, 44), (152, 223, 138), (214, 39, 40), (255, 152, 150),
+             (148, 103, 189), (197, 176, 213), (140, 86, 75), (196, 156, 148),
+             (227, 119, 194), (247, 182, 210), (127, 127, 127), (199, 199, 199),
+             (188, 189, 34), (219, 219, 141), (23, 190, 207), (158, 218, 229)]*/
