@@ -1,6 +1,8 @@
-# Console
+# Flow
 
-Experimental SQL Terminal using Go + Windows Azure.
+*Development.*  Tool intended for data analysis across distributed systems.
+
+### Settings
 
 Program requires a `config.json` in root directory:
 
@@ -15,14 +17,30 @@ Program requires a `config.json` in root directory:
 
 ```
 
-Build and run the program.
+### Running
 
-When you see terminal prompt `azure ~>`, proceed using SQL.
+Build via `go build` and run the program.
+
+When you see terminal prompt `~>`, proceed using SQL.
 
 Special commands:
 
 + `run query.sql` executes code in `./sql/query.sql`
 + `exit` or `quit` will close the terminal, exit the program, and return you to the command line
+
+### Priorities
+
+1) Support multiple languages 
+
+	+ SQL
+	+ Go
+	+ Python
+	+ Scala
+
+2) Integrate NSQ for more flexible / faster architecture
+
+3) Improve UI / UX
+
 
 <br>
 <br>

@@ -53,7 +53,7 @@ func main() {
 	silent := false
 	for !silent {
 		scanner := bufio.NewScanner(os.Stdin)
-		fmt.Print("azure ~> ")
+		fmt.Print("~> ")
 		scanner.Scan()
 
 		text := scanner.Text()
