@@ -32,14 +32,20 @@ Special commands:
 
 1) Support multiple languages 
 
-	+ SQL
-	+ Go
-	+ Python
-	+ Scala
++ SQL
++ Go
++ Python
++ Scala
 
 2) Integrate NSQ for more flexible / faster architecture
 
-3) Improve UI / UX
+3) Create code blocks vis-a-vis [Jupyter](http://jupyter.org/)
+
+3) Develop [Zeppelin](https://zeppelin.incubator.apache.org/)-like visualizations
+
+4) Improve UI / UX
++ Customizable themes / color schemes
+
 
 
 <br>
